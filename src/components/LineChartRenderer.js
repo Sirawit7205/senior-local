@@ -1,4 +1,5 @@
 import { Line, mixins } from "vue-chartjs";
+import zoom from "chartjs-plugin-zoom";
 const { reactiveProp } = mixins;
 
 export default {
@@ -6,6 +7,7 @@ export default {
   mixins: [reactiveProp],
   props: ["options"],
   mounted() {
+    this.addPlugin(zoom);
     //https://stackoverflow.com/questions/40086575/chart-js-draw-mathematical-function/40128171
     //process mathematical function and put results in data[]
     this.addPlugin({

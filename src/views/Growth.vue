@@ -36,7 +36,7 @@ export default {
       datasets: [
         {
           order: 1,
-          label: "Fat",
+          label: "อ้วน",
           data: [],
           function: function(x) {
             return (
@@ -50,13 +50,33 @@ export default {
           },
           borderColor: "rgba(194, 139, 188, 1)",
           backgroundColor: "rgba(194, 139, 188, 1)",
-          fill: 1,
+          fill: "end",
           pointRadius: 0
         },
 
         {
           order: 1,
-          label: "Plump",
+          label: "เริ่มอ้วน",
+          data: [],
+          function: function(x) {
+            return (
+              -5.9518225697293e-8 * x ** 5 +
+              2.46907279656781e-5 * x ** 4 +
+              -0.00395812764617212 * x ** 3 +
+              0.30641197569641 * x ** 2 +
+              -11.153781048658 * x +
+              155.122016276914
+            );
+          },
+          borderColor: "rgba(220, 193, 219, 1)",
+          backgroundColor: "rgba(220, 193, 219, 1)",
+          fill: 2,
+          pointRadius: 0
+        },
+
+        {
+          order: 1,
+          label: "ท้วม",
           data: [],
           function: function(x) {
             return (
@@ -68,15 +88,15 @@ export default {
               133.054999572298
             );
           },
-          borderColor: "rgba(220, 193, 219, 1)",
-          backgroundColor: "rgba(220, 193, 219, 1)",
-          fill: 2,
+          borderColor: "rgba(86, 180, 85, 1)",
+          backgroundColor: "rgba(86, 180, 85, 1)",
+          fill: 3,
           pointRadius: 0
         },
 
         {
           order: 1,
-          label: "Good",
+          label: "สมส่วน",
           data: [],
           function: function(x) {
             return (
@@ -88,15 +108,15 @@ export default {
               125.577035289425
             );
           },
-          borderColor: "rgba(86, 180, 85, 1)",
-          backgroundColor: "rgba(86, 180, 85, 1)",
-          fill: 3,
+          borderColor: "rgba(163, 207, 154, 1)",
+          backgroundColor: "rgba(163, 207, 154, 1)",
+          fill: 5,
           pointRadius: 0
         },
 
         {
           order: 1,
-          label: "Median",
+          label: "มัธยฐาน",
           data: [],
           function: function(x) {
             return (
@@ -108,15 +128,16 @@ export default {
               131.036954746852
             );
           },
-          borderColor: "rgba(163, 207, 154, 1)",
-          backgroundColor: "rgba(163, 207, 154, 1)",
-          fill: 4,
+          borderColor: "rgba(255, 105, 97, 1)",
+          backgroundColor: "rgba(255, 105, 97, 1)",
+          fill: false,
+          borderDash: [5, 10],
           pointRadius: 0
         },
 
         {
           order: 1,
-          label: "Slim",
+          label: "ค่อนข้างผอม",
           data: [],
           function: function(x) {
             return (
@@ -128,15 +149,15 @@ export default {
               116.555612932656
             );
           },
-          borderColor: "rgba(181, 215, 172, 1)",
-          backgroundColor: "rgba(181, 215, 172, 1)",
-          fill: 5,
+          borderColor: "rgba(207, 229, 201, 1)",
+          backgroundColor: "rgba(207, 229, 201, 1)",
+          fill: 6,
           pointRadius: 0
         },
 
         {
           order: 1,
-          label: "Very Slim",
+          label: "ผอม",
           data: [],
           function: function(x) {
             return (
@@ -156,7 +177,7 @@ export default {
 
         {
           order: 0,
-          label: "Growth",
+          label: "บันทึก",
           data: [3, 4, 6, 8, 9, 10],
           borderColor: "rgba(255, 0, 0, 1)",
           fill: false
@@ -166,7 +187,28 @@ export default {
 
     options: {
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      plugins: {
+        zoom: {
+          pan: {
+            // Boolean to enable panning
+            enabled: true,
+
+            // Panning directions. Remove the appropriate direction to disable
+            // Eg. 'y' would only allow panning in the y direction
+            mode: "xy"
+          },
+          // Container for zoom options
+          zoom: {
+            // Boolean to enable zooming
+            enabled: true,
+
+            // Zooming directions. Remove the appropriate direction to disable
+            // Eg. 'y' would only allow zooming in the y direction
+            mode: "xy"
+          }
+        }
+      }
     }
   })
 };
