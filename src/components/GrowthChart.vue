@@ -1,6 +1,18 @@
 <template>
   <div class="linechart">
-    <line-chart :chartData="chartData" :options="options" />
+    <v-tabs v-model="tab" background-color="white" fixed-tabs>
+      <v-tab v-for="name in tabNames" :key="name">
+        {{ name }}
+      </v-tab>
+    </v-tabs>
+
+    <v-tabs-items v-model="tab">
+      <v-tab-item v-for="name in tabNames" :key="name">
+        <v-card flat>
+          <line-chart :chartData="chartData" :options="options" />
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
   </div>
 </template>
 
@@ -23,6 +35,13 @@ export default {
   props: {
     chartData: null,
     options: null
+  },
+
+  data() {
+    return {
+      tab: null,
+      tabNames: ["น้ำหนักต่อส่วนสูง", "ส่วนสูงต่ออายุ", "น้ำหนักต่ออายุ"]
+    };
   }
 };
 </script>
