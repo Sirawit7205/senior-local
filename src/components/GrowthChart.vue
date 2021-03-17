@@ -7,9 +7,9 @@
     </v-tabs>
 
     <v-tabs-items v-model="tab">
-      <v-tab-item v-for="name in tabNames" :key="name">
+      <v-tab-item v-for="obj in chartData" :key="obj.name">
         <v-card flat>
-          <line-chart :chartData="chartData" :options="options" />
+          <line-chart :chartData="obj.dataset" :options="obj.options" />
         </v-card>
       </v-tab-item>
     </v-tabs-items>
@@ -33,8 +33,7 @@ export default {
   },
 
   props: {
-    chartData: null,
-    options: null
+    chartData: null
   },
 
   data() {
